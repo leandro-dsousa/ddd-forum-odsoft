@@ -1,4 +1,3 @@
-
 import { BaseController } from "../../../../../shared/infra/http/models/BaseController";
 import { GetRecentPostsRequestDTO } from "./GetRecentPostsRequestDTO";
 import { GetRecentPosts } from "./GetRecentPosts";
@@ -22,7 +21,6 @@ export class GetRecentPostsController extends BaseController {
       userId: !!req.decoded === true ? req.decoded.userId : null
     }
     
-
     try {
       const result = await this.useCase.execute(dto);
 
