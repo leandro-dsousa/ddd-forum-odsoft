@@ -90,6 +90,10 @@ export class PostRepo implements IPostRepo {
     detailsQuery.offset = offset ? offset : detailsQuery.offset;
     
     const posts = await PostModel.findAll(detailsQuery);
+    for(const element of posts){
+      element.total_num_comments = await this.getNumberOfCommentsByPostId(element.post_id);
+    }
+    
     return posts.map((p) => PostDetailsMap.toDomain(p))
   }
 
